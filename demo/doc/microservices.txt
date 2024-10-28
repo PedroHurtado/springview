@@ -1,0 +1,21 @@
+1. GateWay
+    1.1 Routing
+    1.2 Balanceador de carga
+
+    IDP->oauth
+    metricas
+    
+2. Service Registracion
+3. Service Discovery
+
+4. Circuit breaker
+5. Llamada entre micoservicios
+    http->webclient
+    grpc
+
+6. OutBux pattern
+    https://microservices.io/patterns/data/transactional-outbox.html
+7. CQRS
+    https://microservices.io/patterns/data/cqrs.html
+8. SAGA
+    https://microservices.io/patterns/data/saga.html
