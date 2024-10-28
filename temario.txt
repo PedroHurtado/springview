@@ -1,0 +1,8 @@
+Iniciación a Spring Boot
+Servicios REST
+Acceso a BDD
+Spring Batch
+Microservicios con Patrones
+
+https://github.com/drubioa/demo-spring-batch-with-h2/tree/master
+https://github.com/eugenp/tutorials/tree/master/spring-batch

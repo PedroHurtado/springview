@@ -1,0 +1,52 @@
+pizza={
+    id,
+    name,
+    description,
+    url,
+    price->sum(ingredients) * 1.2 beneficio
+    ingredients:[{
+        id,
+        name,
+        cost
+    }]
+}
+
+1. server http://locahost:8080
+2. path
+    1. pluralizar el resource
+        /pizzas
+    2. expresar acciones
+            /pizzas/add         POST
+            /pizzas/remove      DELETE
+            /pizzas/updte       PUT|PATCH
+    3. definir formatos en la URL
+        /pizzas.json
+        /pizzas.xml
+
+        header:
+
+            accept:"application/json"
+            content-type:"application/json"
+2. Versionado
+    /pizzas
+    /v1/pizzas
+
+1. Crear una pizza
+    Request
+        path: /pizzas
+        verbo: POST
+        header:{
+            accept:"application/json"
+            content-type:"application/json"
+        }
+        body:string->json
+    Response
+        status-code
+            OK                          ERROR
+            201                         500->
+                                        403|404->Forbiden
+                                        401->No autenticado
+                                        405->Method not allowed
+                                        415->Media type not supported
+                                        400->Bad Request
+
