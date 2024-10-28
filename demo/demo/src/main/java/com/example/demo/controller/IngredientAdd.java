@@ -8,6 +8,7 @@ import java.util.UUID;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,8 +33,9 @@ public class IngredientAdd {
         }
 
         @PostMapping()
-        public Response handle(@RequestBody Request request) {
-            return this.service.handle(request);
+        public ResponseEntity<Response> handle(@RequestBody Request request) {
+            var body = this.service.handle(request);
+            return ResponseEntity.status(201).body(body);
         }        
 
     }
