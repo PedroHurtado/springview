@@ -3,6 +3,8 @@ package com.example.demo.domain;
 import java.util.Set;
 import java.util.UUID;
 
+import com.example.demo.core.EntityBase;
+
 import lombok.AccessLevel;
 import lombok.Getter;
 
@@ -10,15 +12,17 @@ import java.util.HashSet;
 import java.util.List;
 
 @Getter
-public class Pizza {
-    private final double PROFIT =  1.2;
+public class Pizza extends EntityBase {
+    private final double PROFIT = 1.2;
     private String name;
     private String description;
     private String url;
     @Getter(AccessLevel.NONE)
+    
     private Set<Ingredient> ingredients = new HashSet<>();
 
     public Pizza(UUID id, String name, String description, String url) {
+        super(id);
         this.name = name;
         this.description = description;
         this.url = url;
@@ -47,6 +51,8 @@ public class Pizza {
     }
 
     public double getPrice() {
-        return ingredients.stream().map(i -> i.getCost()).reduce(0.0,(a,v)->a+v) * PROFIT;
+        return ingredients.stream()
+                .map(i -> i.getCost())
+                .reduce(0.0, (a, v) -> a + v) * PROFIT;
     }
 }
