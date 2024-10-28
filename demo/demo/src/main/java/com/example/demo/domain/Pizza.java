@@ -13,6 +13,7 @@ import java.util.List;
 
 @Getter
 public class Pizza extends EntityBase {
+    @Getter(AccessLevel.NONE)
     private final double PROFIT = 1.2;
     private String name;
     private String description;
