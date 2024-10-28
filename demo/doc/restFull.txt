@@ -50,3 +50,84 @@ pizza={
                                         415->Media type not supported
                                         400->Bad Request
 
+2. Update pizza(Requiere recuperar por GET)->@PathVariable
+    Request
+        path: /pizzas/{id}
+        verbo: PUT
+        header:{
+            accept:"application/json"
+            content-type:"application/json"
+        }
+        body:string->json
+    Response
+        status-code
+            OK                          ERROR
+            204                         500->
+                                        403|404->Forbiden
+                                        401->No autenticado
+                                        405->Method not allowed
+                                        415->Media type not supported
+                                        400->Bad Request
+                                        404->Not found
+
+3. delete pizza(Requiere recuperar por GET)->@PathVariable
+    Request
+        path: /pizzas/{id}
+        verbo: DELETE
+        /*header:{
+            accept:"application/json"
+            content-type:"application/json"
+        }*/
+        body:string->json
+    Response
+        status-code
+            OK                          ERROR
+            204                         500->
+                                        403|404->Forbiden
+                                        401->No autenticado
+                                        405->Method not allowed
+                                        415->Media type not supported
+                                        400->Bad Request
+                                        404->Not found
+
+
+3. get pizza
+    Request
+        path: /pizzas/{id}->@PathVariable
+        verbo: GET
+        header:{
+            accept:"application/json"
+            //content-type:"application/json"
+        }        
+    Response
+        status-code
+            OK                          ERROR
+            200                         500->
+                                        403|404->Forbiden
+                                        401->No autenticado
+                                        405->Method not allowed
+                                        415->Media type not supported
+                                        400->Bad Request
+                                        404->Not found
+
+3. get pizza([])->@PathVariable
+    Request
+        path: /pizzas/{id}
+        verbo: GET
+        header:{
+            accept:"application/json"
+            //content-type:"application/json"
+        }        
+    Response
+        status-code
+            OK                          ERROR
+            200->[]                     500->
+                                        403|404->Forbiden
+                                        401->No autenticado
+                                        405->Method not allowed
+                                        415->Media type not supported
+                                        400->Bad Request
+
+
+?name=car&page=1&size=20->@RequestParam("data")
+                                        
