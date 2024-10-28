@@ -34,6 +34,7 @@ public class AddPizza {
             String name,
             String description,
             String url,
+            double price,
             List<ResponseIngredient> ingredients) {
     }
 
@@ -62,22 +63,20 @@ public class AddPizza {
     public class UseCaseImpl implements UseCase {
 
         private final IngredientRepository repository;
-        public UseCaseImpl(final IngredientRepository repository){
+
+        public UseCaseImpl(final IngredientRepository repository) {
             this.repository = repository;
         }
+
         @Override
         public Response handle(Request request) {
             var pizza = Pizza.Create(request.name(), request.description(), request.url());
 
-            
-            
             request.ingredients.forEach(i -> {
-             var ingredient =    this.repository.get(i.id()).orElseThrow(()->{
+                var ingredient = this.repository.get(i.id()).orElseThrow(() -> {
                     throw new RuntimeException();
                 });
-                pizza.AddIngredient(
-                    ingredient
-                );
+                pizza.AddIngredient(ingredient);
             });
 
             return new Response(
@@ -85,8 +84,9 @@ public class AddPizza {
                     pizza.getName(),
                     pizza.getDescription(),
                     pizza.getUrl(),
+                    pizza.getPrice(),
                     pizza.getIngredients().stream()
-                        .map(i -> new ResponseIngredient(i.getId(), i.getName())).toList());
+                            .map(i -> new ResponseIngredient(i.getId(), i.getName())).toList());
 
         }
     }

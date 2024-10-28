@@ -3,6 +3,7 @@ package com.example.demo.controller.ingredient;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.domain.Ingredient;
+import com.example.demo.infraestructura.IngredientRepository;
 
 import java.util.UUID;
 
@@ -47,9 +48,14 @@ public class IngredientAdd {
     @Component
     public class UseCaseImpl implements UseCase {
 
+        private final IngredientRepository repository;
+        public UseCaseImpl(final IngredientRepository repository){
+            this.repository = repository;
+        }
         @Override
         public Response handle(Request request) {
             var ingredient = Ingredient.create(request.name(), request.cost());
+            this.repository.add(ingredient);
             return new Response(ingredient.getId(), ingredient.getName(), ingredient.getCost());
         }
     }

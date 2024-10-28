@@ -5,8 +5,11 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import org.springframework.stereotype.Component;
+
 import com.example.demo.domain.Ingredient;
 
+@Component
 public class IngredientRepositoryImpl implements IngredientRepository {
     public static List<Ingredient> ingredients = new ArrayList<>();
     @Override
